@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 def findMinAndMax(L):
-    x1,x2 = L[0]
-    for i in L:
-        if i < x1:
-            x2 = i
-        elif i > x1:
-            x1 = i
-    return (x1,x2)
+   if len(L):
+       x1 = x2 = L[0]
+       for i in L:
+           if i < x1:
+               x1 = i
+           if i > x2:
+               x2 = i
+           else:
+               pass
+       return (x1,x2)
+   else:
+    return (None,None)
     pass
-
 # 测试
 if findMinAndMax([]) != (None, None):
     print('测试失败!')
