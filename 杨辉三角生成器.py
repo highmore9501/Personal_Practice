@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
 def triangles():
-    L = [1]
-    yield L
+    A = [1]
+    yield A
     while True:
-        L.insert(0, 1)
-        for i in range(0, len(L) - 1):
-            if i == 0:
-                pass
-            elif i < len(L):
-                L[i] += L[i + 1]
-            else:
-                L[i] = 1
-        yield L
+        A.insert(0, 1)
+        for i in range(1, len(A) - 1):
+            A[i] += A[i + 1]
+        yield A
 
 
 # 期待输出:
@@ -28,8 +23,8 @@ def triangles():
 n = 0
 results = []
 for t in triangles():
-    print(t)
-    results.append(t)
+    s = list(t)
+    results.append(s) #原答案是直接append t，但是发现不行；可能是因为t是生成器而不是list，所以把t输出成list然后再append，就成功了。
     n = n + 1
     if n == 10:
         break
